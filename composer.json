@@ -1,0 +1,22 @@
+{
+    "name": "klsoft/php-keycloak-client",
+    "type": "library",
+    "description": "A PHP library that can be used to secure web applications with Keycloak.",
+    "homepage": "https://github.com/klsoft-web/php-keycloak-client",
+    "keywords": [
+        "authentication",
+        "authorization",
+        "authorisation",
+        "oauth2",
+        "keycloak"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Klsoft\\KeycloakClient\\": "src"
+        }
+    }
+}
