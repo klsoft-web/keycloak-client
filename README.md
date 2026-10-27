@@ -1,6 +1,6 @@
 # KEYCLOAK-CLIENT
 
-A PHP library that can be used to secure web applications with Keycloak. It is typically used in conjunction with RESTful web service APIs.
+A PHP library that can be used to secure web applications with [Keycloak](https://www.keycloak.org). It is typically used in conjunction with RESTful web service APIs.
 
 See also:
 
