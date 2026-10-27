@@ -1,4 +1,4 @@
-# PHP-KEYCLOAK-CLIENT
+# KEYCLOAK-CLIENT
 
 A PHP library that can be used to secure web applications with Keycloak. It is typically used in conjunction with RESTful web service APIs.
 
@@ -16,7 +16,7 @@ See also:
 ## Installation
 
 ```bash
-composer require klsoft/php-keycloak-client
+composer require klsoft/keycloak-client
 ```
 
 ## Example of initializing a KeycloakClient

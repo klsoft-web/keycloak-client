@@ -1,8 +1,8 @@
 {
-    "name": "klsoft/php-keycloak-client",
+    "name": "klsoft/keycloak-client",
     "type": "library",
     "description": "A PHP library that can be used to secure web applications with Keycloak.",
-    "homepage": "https://github.com/klsoft-web/php-keycloak-client",
+    "homepage": "https://github.com/klsoft-web/keycloak-client",
     "keywords": [
         "authentication",
         "authorization",
