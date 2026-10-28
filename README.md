@@ -1,6 +1,6 @@
 # KEYCLOAK-CLIENT
 
-A PHP library that can be used to secure web applications with [Keycloak](https://www.keycloak.org). It is typically used in conjunction with RESTful web service APIs.
+A PHP library that can be used to secure web applications with Keycloak. It is typically used in conjunction with RESTful web service APIs.
 
 See also:
 
@@ -49,7 +49,7 @@ $keycloakClient = new KeycloakClient(
 $queryParams = $request->getQueryParams();
 if (isset($queryParams['code'])) {
     $responseResult = $keycloakClient->fetchTokenByAuthorizationCode($queryParams['code"']);
-    if ($responseResult->responseStatusCode == 200) {
+    if ($responseResult->responseStatusCode === 200) {
         $data = $responseResult->data;
         $identityData = $this->extractIndentityData($data->id_token);
         $identityRepository->save(new User(
@@ -61,7 +61,7 @@ if (isset($queryParams['code'])) {
         $identity = $identityRepository->findIdentity($identityData->sub)    
         $authManager->login($identity);
     } 
-    elseif ($responseResult->responseStatusCode == 401) {
+    elseif ($responseResult->responseStatusCode === 401) {
         //Unauthorized
     }
     else {
@@ -76,10 +76,10 @@ This method can only be used by confidential clients. Make sure that both the **
 
 ```php
 $responseResult = $keycloakClient->fetchTokenByClientCredentials();
-if ($responseResult->responseStatusCode == 200) {
+if ($responseResult->responseStatusCode === 200) {
     $data = $responseResult->data;
 } 
-elseif ($responseResult->responseStatusCode == 401) {
+elseif ($responseResult->responseStatusCode === 401) {
     //Unauthorized
 }
 else {
@@ -91,7 +91,7 @@ else {
 
 ```php
 $responseResult = $keycloakClient->refreshToken($authManager->identity->refresh_token);
-if ($responseResult->responseStatusCode == 200) {
+if ($responseResult->responseStatusCode === 200) {
     $data = $responseResult->data;
     $identityRepository->findIdentity($identityData->sub);
     $identityData = $this->extractIndentityData($data->id_token);
@@ -104,7 +104,7 @@ if ($responseResult->responseStatusCode == 200) {
         $identityRepository->save($user);
     }
 } 
-elseif ($responseResult->responseStatusCode == 401) {
+elseif ($responseResult->responseStatusCode === 401) {
     //Unauthorized
 }
 else {
@@ -114,14 +114,16 @@ else {
 
 ## Example of fetching a Requesting Party Token using a permission ticket
 
+When a client requests a protected web service API method, they are issued with a permission ticket. The web service uses the Keycloak authorisation services endpoint to [request this ticket](https://github.com/klsoft-web/yii3-keycloak-authz#1-implement-klsoftyii3keycloakauthzkeycloakrepositoryinterface), providing details of the permissions required to perform the protected method.
+
 ```php
 $responseResult = $keycloakClient->fetchRequestingPartyTokenByPermissionTicket(
     $authManager->identity->access_token,
     "permission ticket");
-if ($responseResult->responseStatusCode == 200) {
+if ($responseResult->responseStatusCode === 200) {
     $rpt = $responseResult->data->access_token;
 } 
-elseif ($responseResult->responseStatusCode == 401) {
+elseif ($responseResult->responseStatusCode === 401) {
     //Unauthorized
 }
 else {
@@ -133,10 +135,10 @@ else {
 
 ```php
 $responseResult = $keycloakClient->fetchRequestingPartyTokenByClientId($authManager->identity->access_token);
-if ($responseResult->responseStatusCode == 200) {
+if ($responseResult->responseStatusCode === 200) {
     $rpt = $responseResult->data->access_token;
 } 
-elseif ($responseResult->responseStatusCode == 401) {
+elseif ($responseResult->responseStatusCode === 401) {
     //Unauthorized
 }
 else {
@@ -148,10 +150,10 @@ else {
 
 ```php
 $responseResult = $keycloakClient->fetchUserInfo($authManager->identity->access_token);
-if ($responseResult->responseStatusCode == 200) {
+if ($responseResult->responseStatusCode === 200) {
     $data = $responseResult->data;
 }
-elseif ($responseResult->responseStatusCode == 401) {
+elseif ($responseResult->responseStatusCode === 401) {
     //Unauthorized
 }
 else {
@@ -163,10 +165,10 @@ else {
 
 ```php
 $responseResult = $keycloakClient->logout($authManager->identity->refresh_token);
-if ($responseResult->responseStatusCode == 204) {
+if ($responseResult->responseStatusCode === 204) {
     $authManager->logout();
 } 
-elseif ($responseResult->responseStatusCode == 401) {
+elseif ($responseResult->responseStatusCode === 401) {
     //Unauthorized
 }
 else {
